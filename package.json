@@ -1,0 +1,22 @@
+{
+  "name": "tero",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun run index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/ink": "^2.0.3",
+    "@types/react": "^19.2.14"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "fullscreen-ink": "^0.1.0",
+    "ink": "^7.0.0",
+    "react": "^19.2.5"
+  }
+}
