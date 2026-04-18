@@ -2,6 +2,7 @@ import {
   AttackComponent,
   AttackCooldownComponent,
   HealthComponent,
+  TargetComponent,
 } from "../../domain/ComponentTypes";
 import { AttackSystem } from "../../domain/systems/AttackSystem";
 import { World } from "../../domain/World";
@@ -23,7 +24,8 @@ export function StandardRecipe(tickRate: number): {
       critProbability: 0.1,
       attackSpeed: 1,
     })
-    .add(AttackCooldownComponent, { cooldown: 0 });
+    .add(AttackCooldownComponent, { cooldown: 0 })
+    .add(TargetComponent, { entity: enemy });
   world
     .entity(enemy)
     .add(HealthComponent, { life: 100, health: 100 })
@@ -32,7 +34,8 @@ export function StandardRecipe(tickRate: number): {
       critProbability: 0,
       attackSpeed: 1,
     })
-    .add(AttackCooldownComponent, { cooldown: 0 });
+    .add(AttackCooldownComponent, { cooldown: 0 })
+    .add(TargetComponent, { entity: player });
 
   const runner = new SystemRunner();
   runner.add(AttackSystem);

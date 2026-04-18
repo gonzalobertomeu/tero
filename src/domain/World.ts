@@ -19,7 +19,8 @@ export class World {
   }
 
   public createEntity() {
-    const entity = +this.nextEntityId;
+    const entity = this.nextEntityId;
+    this.nextEntityId++;
     this.entities.push(entity);
     return entity;
   }
@@ -42,5 +43,13 @@ export class World {
         self.getStore(component).delete(entity);
       },
     };
+  }
+
+  public allStores() {
+    return this.stores;
+  }
+
+  public listEntities() {
+    return this.entities;
   }
 }
