@@ -1,13 +1,13 @@
-import type { ComponentType } from "./ComponentTypes";
-import type { Entity } from "./entity/Entity";
+import type { ComponentType } from "@engine/domain/ComponentTypes";
+import type { Entity } from "@engine/domain/entity/Entity";
 export class World {
   private nextEntityId: number;
-  private entities: number[];
+  private entities: Set<number>;
   private stores: Map<symbol, Map<Entity, any>>;
 
   constructor(public tickRate: number) {
     this.nextEntityId = 1;
-    this.entities = [];
+    this.entities = new Set();
     this.stores = new Map();
   }
 
@@ -18,10 +18,22 @@ export class World {
     return this.stores.get(component.key)!;
   }
 
+  public removeEntity(entity: Entity) {
+    if (!this.entities.has(entity)) {
+      return;
+    }
+    for (const [_, store] of this.stores) {
+      if (store.has(entity)) {
+        store.delete(entity);
+      }
+    }
+    this.entities.delete(entity);
+  }
+
   public createEntity() {
     const entity = this.nextEntityId;
     this.nextEntityId++;
-    this.entities.push(entity);
+    this.entities.add(entity);
     return entity;
   }
 
@@ -41,6 +53,9 @@ export class World {
       },
       remove<T>(component: ComponentType<T>) {
         self.getStore(component).delete(entity);
+      },
+      clearEntity() {
+        self.removeEntity(entity);
       },
     };
   }

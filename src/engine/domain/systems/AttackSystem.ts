@@ -1,5 +1,5 @@
-import type { Attack } from "../components/Attack";
-import type { Health } from "../components/Health";
+import type { Attack } from "@engine/domain/components/Attack";
+import type { Health } from "@engine/domain/components/Health";
 import {
   AttackComponent,
   AttackCooldownComponent,

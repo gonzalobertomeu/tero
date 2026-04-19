@@ -1,4 +1,4 @@
-import type { World } from "../domain/World";
+import type { World } from "@engine/domain/World";
 
 export function WorldSerializer(world: World) {
   const result: Record<string, any> = {

@@ -1,7 +1,7 @@
-import { World } from "../domain/World";
-import { WorldSerializer } from "../infrastructure/WorldSerializer";
-import { StandardRecipe } from "./Recipes/Standard";
-import { SystemRunner } from "./SystemRunner";
+import { World } from "@engine/domain/World";
+// import { WorldSerializer } from "@engine/infrastructure/WorldSerializer";
+import { StandardRecipe } from "@engine/application/Recipes/Standard";
+import { SystemRunner } from "@engine/application/SystemRunner";
 
 export class GameLoop {
   private systemRunner: SystemRunner;

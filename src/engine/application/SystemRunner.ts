@@ -1,5 +1,5 @@
-import type { System } from "../domain/systems/System.type";
-import type { World } from "../domain/World";
+import type { System } from "@engine/domain/systems/System.type";
+import type { World } from "@engine/domain/World";
 
 export class SystemRunner {
   private systems: System[];
