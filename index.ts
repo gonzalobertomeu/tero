@@ -9,5 +9,9 @@ import { WorldSerializer } from "@engine/infrastructure/WorldSerializer";
 const game = new GameLoop("standard", 30);
 game.start((world: World) => {
   console.clear();
-  console.log(JSON.stringify(WorldSerializer(world)));
+  const data = WorldSerializer(world);
+  // console.log(data);
+  for (const entity in data.entities) {
+    console.log(data.entities[entity]);
+  }
 });
